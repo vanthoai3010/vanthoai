@@ -382,4 +382,38 @@ document.addEventListener('DOMContentLoaded', function() {
   addPageTransitions();
   addSmoothReveal();
   createScrollTopButton();
+  createFallingSnow(); // Initialize falling snow
+
+  // Function to create falling snow
+  function createFallingSnow() {
+    const snowCount = 50; // Number of snowflakes
+    const container = document.querySelector('.portfolio-container');
+    
+    // Create snowflakes
+    for (let i = 0; i < snowCount; i++) {
+      const snowflake = document.createElement('div');
+      snowflake.className = 'snowflake';
+      
+      // Randomize snowflake properties
+      const size = Math.random() * 5 + 3; // Random size between 3-8px
+      const startPositionX = Math.random() * 100; // Random start position
+      const startOpacity = Math.random() * 0.3 + 0.7; // Random opacity
+      const duration = Math.random() * 5 + 5; // Random duration between 5-10s
+      
+      // Set snowflake styles
+      snowflake.style.width = `${size}px`;
+      snowflake.style.height = `${size}px`;
+      snowflake.style.left = `${startPositionX}%`;
+      snowflake.style.opacity = startOpacity;
+      snowflake.style.animationDuration = `${duration}s`;
+      snowflake.style.animationDelay = `${Math.random() * 5}s`;
+      
+      // Add snowflake to container
+      if (container) {
+        container.appendChild(snowflake);
+      } else {
+        document.body.appendChild(snowflake);
+      }
+    }
+  }
 }); 
