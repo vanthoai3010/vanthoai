@@ -384,10 +384,11 @@ document.addEventListener('DOMContentLoaded', function() {
   createScrollTopButton();
   createFallingSnow(); // Initialize falling snow
 
-  // Function to create falling snow
+  // Function to create falling snowflakes
   function createFallingSnow() {
     const snowCount = 50; // Number of snowflakes
     const container = document.querySelector('.portfolio-container');
+    const snowflakeChars = ['❄', '❅', '❆', '✻', '✼', '❉']; // Different snowflake characters
     
     // Create snowflakes
     for (let i = 0; i < snowCount; i++) {
@@ -395,18 +396,21 @@ document.addEventListener('DOMContentLoaded', function() {
       snowflake.className = 'snowflake';
       
       // Randomize snowflake properties
-      const size = Math.random() * 5 + 3; // Random size between 3-8px
+      const size = Math.random() * 15 + 10; // Random size between 10-25px
       const startPositionX = Math.random() * 100; // Random start position
       const startOpacity = Math.random() * 0.3 + 0.7; // Random opacity
       const duration = Math.random() * 5 + 5; // Random duration between 5-10s
+      const snowflakeChar = snowflakeChars[Math.floor(Math.random() * snowflakeChars.length)];
       
       // Set snowflake styles
-      snowflake.style.width = `${size}px`;
-      snowflake.style.height = `${size}px`;
+      snowflake.style.fontSize = `${size}px`;
       snowflake.style.left = `${startPositionX}%`;
       snowflake.style.opacity = startOpacity;
       snowflake.style.animationDuration = `${duration}s`;
       snowflake.style.animationDelay = `${Math.random() * 5}s`;
+      
+      // Set random snowflake character
+      snowflake.textContent = snowflakeChar;
       
       // Add snowflake to container
       if (container) {

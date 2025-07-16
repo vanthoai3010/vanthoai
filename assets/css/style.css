@@ -831,20 +831,21 @@ input, textarea {
   cursor: url('../css/cursor/Text-Select.cur'), text;
 }
 
-/* Falling Snow Animation */
+/* Falling Snowflakes Animation */
 .snowflake {
   position: fixed;
-  width: 8px;
-  height: 8px;
-  background-color: white;
-  border-radius: 50%;
+  color: white;
+  font-size: 20px;
   z-index: 1;
-  top: -10px;
+  top: -20px;
   opacity: 0.8;
   pointer-events: none;
   animation: snowfall linear infinite;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  user-select: none;
 }
+
+
 
 @keyframes snowfall {
   0% {
@@ -865,21 +866,63 @@ input, textarea {
 .snowflake:nth-child(even) {
   animation-duration: 6s;
   animation-delay: 1s;
+  font-size: 22px;
 }
 
 .snowflake:nth-child(3n) {
   animation-duration: 10s;
   animation-delay: 2s;
+  animation-name: snowfall-sway;
 }
 
 .snowflake:nth-child(3n+1) {
   animation-duration: 7s;
   animation-delay: 3s;
+  font-size: 18px;
 }
 
 .snowflake:nth-child(5n) {
   animation-duration: 9s;
   animation-delay: 1.5s;
+  animation-name: snowfall-spin;
+}
+
+@keyframes snowfall-sway {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(50vh) translateX(30px) rotate(180deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(110vh) translateX(-10px) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes snowfall-spin {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(25vh) translateX(15px) rotate(90deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(50vh) translateX(0px) rotate(180deg);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateY(75vh) translateX(-15px) rotate(270deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(110vh) translateX(0px) rotate(360deg);
+    opacity: 0.3;
+  }
 }
 
 /* Media Queries */
@@ -934,4 +977,5 @@ input, textarea {
   .hero-text h1 {
     font-size: 2.8rem;
   }
+}
 }
